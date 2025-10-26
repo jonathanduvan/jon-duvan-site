@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/* === Base tokens === */
+@theme {
+  /* Default: light mode */
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-text: #1c1e26;
+  --color-text-muted: #4b5563;
+  --color-accent: #0070f3;
+  --color-accent-secondary: #2563eb;
+  --color-border: #e5e7eb;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "IBM Plex Sans", "Inter", sans-serif;
+  --space-section: 6rem;
+  --shadow-glow: 0 0 10px rgba(226, 183, 20, 0.3);
+}
+
+/* === Dark-mode override using prefers-color-scheme === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0b1527;
+    --color-bg-secondary: #010b18;
+    --color-text: #d8dee9;
+    --color-text-muted: #a0a0a0;
+    --color-accent: #07f6e2be;
+    --color-accent-secondary: #fb59a5;
+    --color-border: #2d2f3b;
+  }
+}
+
+/* === Optional manual toggle overrides === */
+[data-theme="light"] {
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-text: #1c1e26;
+  --color-text-muted: #4b5563;
+  --color-accent: #0070f3;
+  --color-accent-secondary: #2563eb;
+  --color-border: #e5e7eb;
+}
+
+[data-theme="dark"] {
+  --color-bg: #1c1e26;
+  --color-bg-secondary: #262831;
+  --color-text: #d8dee9;
+  --color-text-muted: #a0a0a0;
+  --color-accent: #e2b714;
+  --color-accent-secondary: #39a0ed;
+  --color-border: #343745;
+}
+
+/* === Global defaults === */
+html {
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  /* line-height: 1.6; */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* === Typography === */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  /* line-height: 1.2; */
+}
+/* h1 { font-size: 2.75rem; font-weight: 700; } */
+/* h2 { font-size: 2rem; font-weight: 600; } */
+/* p  { margin-top: 1rem; color: var(--color-text-muted); } */
+
+/* === Utility helpers === */
+.bg-primary   { background-color: var(--color-bg); }
+.bg-secondary { background-color: var(--color-bg-secondary); }
+.text-primary { color: var(--color-text); }
+.text-muted   { color: var(--color-text-muted); }
+.text-accent  { color: var(--color-accent); }
+.text-accent-hover:hover { color: var(--color-accent-secondary); }
+.border-subtle { border-color: var(--color-border); }
+.shadow-glow  { box-shadow: var(--shadow-glow); }
+
+/* === Layout === */
+section {
+  padding-block: var(--space-section);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === Links === */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+a:hover,
+a:focus {
+  color: var(--color-accent-secondary);
+  outline: none;
+}
+
+/* === Accessibility === */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+progress::-webkit-progress-value {
+  transition: background-color 0.3s ease;
+}
+
+.dot-nav span {
+  font-family: var(--font-sans);
+  letter-spacing: 0.02em;
+}
