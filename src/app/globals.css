@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
-/* === Base tokens === */
-@theme {
-  /* Default: light mode */
+/* =========================================================
+   THEME TOKENS — Single Source of Truth
+   Define color palette, fonts, spacing, shadows, and radius.
+   ========================================================= */
+
+:root {
+  /* === LIGHT MODE === */
   --color-bg: #ffffff;
   --color-bg-secondary: #f8f9fa;
   --color-text: #1c1e26;
@@ -11,13 +15,19 @@
   --color-accent-secondary: #2563eb;
   --color-border: #e5e7eb;
 
+  /* Shadows & gradients tuned for light */
+  --shadow-fade-start: rgba(0, 0, 0, 0.12);
+  --shadow-fade-end: rgba(0, 0, 0, 0);
+  --shadow-glow: 0 0 10px rgba(226, 183, 20, 0.25);
+
+  /* Fonts & layout spacing */
   --font-sans: "Inter", system-ui, sans-serif;
   --font-heading: "IBM Plex Sans", "Inter", sans-serif;
   --space-section: 6rem;
-  --shadow-glow: 0 0 10px rgba(226, 183, 20, 0.3);
+  --radius-card: 1rem;
 }
 
-/* === Dark-mode override using prefers-color-scheme === */
+/* === DARK MODE OVERRIDE === */
 @media (prefers-color-scheme: dark) {
   :root {
     --color-bg: #0b1527;
@@ -27,65 +37,57 @@
     --color-accent: #07f6e2be;
     --color-accent-secondary: #fb59a5;
     --color-border: #2d2f3b;
+
+    /* Shadows reversed for dark: lighter glow at edges */
+    --shadow-fade-start: rgba(255, 255, 255, 0.25);
+    --shadow-fade-end: rgba(255, 255, 255, 0);
+    --shadow-glow: 0 0 10px rgba(255, 255, 255, 0.08);
   }
 }
 
-/* === Optional manual toggle overrides === */
-[data-theme="light"] {
-  --color-bg: #ffffff;
-  --color-bg-secondary: #f8f9fa;
-  --color-text: #1c1e26;
-  --color-text-muted: #4b5563;
-  --color-accent: #0070f3;
-  --color-accent-secondary: #2563eb;
-  --color-border: #e5e7eb;
-}
+/* =========================================================
+   GLOBAL DEFAULTS
+   ========================================================= */
 
-[data-theme="dark"] {
-  --color-bg: #1c1e26;
-  --color-bg-secondary: #262831;
-  --color-text: #d8dee9;
-  --color-text-muted: #a0a0a0;
-  --color-accent: #e2b714;
-  --color-accent-secondary: #39a0ed;
-  --color-border: #343745;
-}
-
-/* === Global defaults === */
 html {
   color-scheme: light dark;
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 80px; /* prevents nav overlap when scrolling to anchors */
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
-  /* line-height: 1.6; */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* === Typography === */
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
-  /* line-height: 1.2; */
 }
-/* h1 { font-size: 2.75rem; font-weight: 700; } */
-/* h2 { font-size: 2rem; font-weight: 600; } */
-/* p  { margin-top: 1rem; color: var(--color-text-muted); } */
+.text-muted {
+  color: var(--color-text-muted);
+}
 
-/* === Utility helpers === */
+/* =========================================================
+   UTILITY HELPERS
+   ========================================================= */
+
 .bg-primary   { background-color: var(--color-bg); }
 .bg-secondary { background-color: var(--color-bg-secondary); }
-.text-primary { color: var(--color-text); }
-.text-muted   { color: var(--color-text-muted); }
 .text-accent  { color: var(--color-accent); }
 .text-accent-hover:hover { color: var(--color-accent-secondary); }
 .border-subtle { border-color: var(--color-border); }
 .shadow-glow  { box-shadow: var(--shadow-glow); }
 
-/* === Layout === */
+/* =========================================================
+   LAYOUT HELPERS
+   ========================================================= */
+
 section {
   padding-block: var(--space-section);
   min-height: 100vh;
@@ -95,7 +97,23 @@ section {
   align-items: center;
 }
 
-/* === Links === */
+/* Sub-sections for smaller grouped areas */
+.sub-section {
+  padding-block: calc(var(--space-section) * 0.4);
+  min-height: 50vh;
+  border-top: 1px solid var(--color-border);
+  margin-top: 2rem;
+  scroll-margin-top: 4rem;
+}
+.sub-section:first-of-type {
+  border-top: none;
+  margin-top: 0;
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
 a {
   color: var(--color-accent);
   text-decoration: none;
@@ -107,17 +125,79 @@ a:focus {
   outline: none;
 }
 
-/* === Accessibility === */
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-progress::-webkit-progress-value {
-  transition: background-color 0.3s ease;
+/* =========================================================
+   SCROLL HINT (horizontal scroll indicators)
+   ========================================================= */
+
+.scroll-hint {
+  display: block; /* block for scroll behavior */
+  position: relative;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: 1rem;
+  border: none;
+  border-radius: var(--radius-card);
+  background: var(--color-bg-secondary);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.08);
+}
+.scroll-hint > * {
+  display: inline-flex;
 }
 
-.dot-nav span {
-  font-family: var(--font-sans);
-  letter-spacing: 0.02em;
+
+/* Light mode fades */
+.scroll-hint::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--shadow-fade-start),
+    var(--shadow-fade-end)
+  );
 }
+.scroll-hint::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--shadow-fade-start),
+    var(--shadow-fade-end)
+  );
+}
+
+/* Hide fades when fully scrolled */
+.scroll-hint[data-scroll='start']::before {
+  opacity: 0;
+}
+.scroll-hint[data-scroll='end']::after {
+  opacity: 0;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .scroll-hint::before {
+    background: linear-gradient(
+      to right,
+      var(--shadow-fade-start),
+      var(--shadow-fade-end)
+    );
+  }
+  .scroll-hint::after {
+    background: linear-gradient(
+      to left,
+      var(--shadow-fade-start),
+      var(--shadow-fade-end)
+    );
+  }
+}
+

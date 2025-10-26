@@ -1,29 +1,32 @@
+'use client'
+
+import { motion } from 'framer-motion'
 import SectionWrapper from './SectionWrapper'
+import ProjectCard from './ProjectCard'
 import { projects } from '@/data/projects'
+import { gridStagger } from '@/lib/motion'
 
 export default function WorkSection() {
   return (
     <SectionWrapper id="work" bg="bg-secondary">
-      <div>
-        <h2 className="text-4xl font-bold text-accent mb-8 text-center md:text-left">
-          Selected Work
+        <h2 className="text-3xl md:text-4xl font-semibold text-accent mb-10 text-center md:text-left">
+          Select Projects
         </h2>
-        <ul className="space-y-8">
-          {projects.map((p) => (
-            <li key={p.title} className="border-b border-subtle pb-4">
-              <h3 className="text-2xl font-semibold text-accent-hover">
-                <a href={p.link} target="_blank" rel="noopener noreferrer">
-                  {p.title}
-                </a>
-              </h3>
-              <p className="text-muted">{p.description}</p>
-              <p className="mt-2 text-sm text-muted">
-                {p.tech.join(' • ')}
-              </p>
-            </li>
+        <p className="text-muted text-base md:text-lg mb-10 max-w-7xl mx-auto md:mx-0">
+          Some of my latest projects I am currently working on.
+        </p>
+
+        <motion.div
+          variants={gridStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {projects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
           ))}
-        </ul>
-      </div>
+        </motion.div>
     </SectionWrapper>
   )
 }

@@ -28,14 +28,20 @@ export default function SectionWrapper({
   return (
     <section
       id={id}
-      className={`${bg} flex min-h-screen flex-col items-center justify-center px-6`}
+      className={`${bg} flex min-h-screen flex-col items-center justify-center`}
     >
+      {/* 
+        "container" keeps content centered.
+        "mx-auto" centers horizontally.
+        Responsive padding ensures breathing room on all screens.
+        "max-w-screen-2xl" = ~1536px cap (fluid on wide monitors).
+      */}
       <motion.div
         variants={variant}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="w-full max-w-4xl"
+        className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 max-w-screen-2xl w-full"
       >
         {children}
       </motion.div>
