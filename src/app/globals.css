@@ -10,20 +10,19 @@
 
 :root {  
 
-  /* === LIGHT MODE === */
-  
-  --color-bg: #ffffff;
-  --color-bg-secondary: #f8f9fa;
-  --color-text: #1c1e26;
-  --color-text-muted: #4b5563;
-  --color-accent: #0070f3;
-  --color-accent-secondary: #2563eb;
-  --color-border: #e5e7eb;
+  /* === LIGHT MODE (updated for comfort) === */
+  --color-bg: #F9FAFB;                /* soft neutral base */
+  --color-bg-secondary: #F3F4F6;      /* subtle card contrast */
+  --color-text: #202227;              /* near-black for natural contrast */
+  --color-text-muted: #5C6472;        /* mid gray for secondary info */
+  --color-accent: #0070F3;            /* existing primary accent */
+  --color-accent-secondary: #2563EB;  /* deeper accent for hover/focus */
+  --color-border: #D8DCE1;            /* low-contrast borders */
 
   /* Shadows & gradients tuned for light */
-  --shadow-fade-start: rgba(0, 0, 0, 0.12);
+  --shadow-fade-start: rgba(0, 0, 0, 0.10);
   --shadow-fade-end: rgba(0, 0, 0, 0);
-  --shadow-glow: 0 0 10px rgba(226, 183, 20, 0.25);
+  --shadow-glow: 0 0 8px rgba(0, 0, 0, 0.08);  /* softer glow */
 
   /* Fonts & layout spacing */
   --font-sans: "Inter", system-ui, sans-serif;

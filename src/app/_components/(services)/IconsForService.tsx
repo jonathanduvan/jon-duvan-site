@@ -1,33 +1,33 @@
 'use client'
 
-import dynamic from 'next/dynamic'
-import { memo } from 'react'
+import dynamic, { DynamicOptions } from 'next/dynamic'
+import { memo, ComponentType } from 'react'
 import type { LucideProps } from 'lucide-react'
 import { IconName } from '@/app/_data/services'
 
-// For each icon we support, define a lazy loader.
-// next/dynamic ensures code splitting per-icon.
-const iconMap: Record<IconName, ReturnType<typeof dynamic>> = {
-  Code: dynamic(async () => {
-    const mod = await import('lucide-react')
-    return mod.Code
-  }),
-  ClipboardCheck: dynamic(async () => {
-    const mod = await import('lucide-react')
-    return mod.ClipboardCheck
-  }),
-  BarChart3: dynamic(async () => {
-    const mod = await import('lucide-react')
-    return mod.BarChart3
-  }),
-  Sun: dynamic(async () => {
-    const mod = await import('lucide-react')
-    return mod.Sun
-  }),
-  BookOpen: dynamic(async () => {
-    const mod = await import('lucide-react')
-    return mod.BookOpen
-  }),
+/**
+ * Helper to safely create dynamically loaded Lucide icons.
+ * - Keeps SSR disabled to avoid hydration mismatch
+ * - Strongly typed with LucideProps
+ */
+function dynamicLucideIcon(name: keyof typeof import('lucide-react')) {
+  return dynamic<LucideProps>(
+    async () => {
+      const mod = await import('lucide-react')
+      // Return the specific Lucide icon component
+      return (mod as unknown as Record<string, ComponentType<LucideProps>>)[name]
+    },
+    { ssr: false } satisfies DynamicOptions<LucideProps>
+  )
+}
+
+/** Map of icon names to dynamic Lucide imports */
+const iconMap: Record<IconName, ComponentType<LucideProps>> = {
+  Code: dynamicLucideIcon('Code'),
+  ClipboardCheck: dynamicLucideIcon('ClipboardCheck'),
+  BarChart3: dynamicLucideIcon('BarChart3'),
+  Sun: dynamicLucideIcon('Sun'),
+  BookOpen: dynamicLucideIcon('BookOpen'),
 }
 
 type IconForServiceProps = {
@@ -35,23 +35,20 @@ type IconForServiceProps = {
   className?: string
 }
 
-// memo to avoid rerender noise in cards/grids
+/** Memoized icon renderer for cards/grids */
 function IconForServiceBase({ name, className }: IconForServiceProps) {
   const IconComponent = iconMap[name]
 
   if (!IconComponent) {
-    // graceful fallback box, tiny and neutral
     return (
       <div
-        className={`w-6 h-6 rounded-sm border border-[var(--color-border)] bg-[var(--color-bg-secondary)] ${className || ''
-          }`}
+        className={`w-6 h-6 rounded-sm border border-[var(--color-border)] bg-[var(--color-bg-secondary)] ${className ?? ''}`}
         aria-hidden="true"
       />
     )
   }
 
-  // We forward className to Lucide so tailwind sizing/color still works
-  return <IconComponent className={className} strokeWidth={1.75 as LucideProps['strokeWidth']} />
+  return <IconComponent className={className} strokeWidth={1.75} />
 }
 
 const IconForService = memo(IconForServiceBase)
