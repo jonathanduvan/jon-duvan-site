@@ -74,8 +74,8 @@ export default function CredentialBadges() {
 
       {/* === In-Progress Credentials === */}
       <div className="flex-1">
-        <h3 className="text-[var(--color-text-muted)] text-lg font-semibold mb-4">
-          Credentials In Progress
+        <h3 className="text-[var(--color-text-muted)] text-lg font-semibold italic mb-4">
+          Creds In Progress
         </h3>
         <ul className="flex flex-col items-center justify-center gap-2">
           {inProgress.map((cred) => (

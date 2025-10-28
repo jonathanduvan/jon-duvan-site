@@ -16,7 +16,7 @@ export default function ServicesSection() {
         <h2 className="text-3xl md:text-4xl font-semibold text-accent mb-8 text-center md:text-left">
           Services & Offerings
         </h2>
-        <p className="text-sm text-[var(--color-text)] mb-10 max-w-3xl">
+        <p className="text-sm text-(--color-text) mb-10 max-w-3xl">
           Hire me for software, data, and energy-focused projects.  
           Below are key areas where I can contribute immediately — from full-stack
           development to project management and renewable-energy consulting.

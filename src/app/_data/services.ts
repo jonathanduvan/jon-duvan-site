@@ -154,19 +154,35 @@ export const services: Service[] = [
     id: 'tutoring',
     title: 'Tutoring & Mentorship',
     icon: 'BookOpen',
-    short: 'STEM, software, and sustainability education.',
-    description:
-      'Private tutoring for programming, math, physics, and energy systems — fostering curiosity and confidence across ages.',
-    tags: ['STEM', 'Python', 'Math', 'Physics', 'Coaching'],
+    short: 'Personalized instruction in math, coding, and technology for learners of all levels.',
+    description: 'I provide one-on-one and small-group tutoring that helps students and professionals build lasting confidence in problem-solving, coding, and technical literacy.',
+    tags: ['algebra', 'coding', 'calculus', 'ESOL', 'mentorship', 'STEM'],
     details: {
-      overview:
-        'Helping students and professionals build technical fluency and confidence through applied projects and conceptual understanding.',
-      highlights: [
-        'One-on-one instruction',
-        'Curriculum design',
-        'Technical writing',
+      overview: "I work with students from 5th grade through adulthood to make complex concepts approachable and practical. My teaching blends structured skill-building with real-world examples drawn from my experience in software development and analytics. Whether it’s algebra, calculus, or introductory programming, I focus on helping learners understand the 'why' behind the methods so they can apply knowledge independently.",
+      experience: [
+        "Tutored students in algebra, calculus, and computer science from 5th grade through college level.",
+        "Mentored teachers and professionals on integrating digital tools and AI responsibly in classrooms and workplaces.",
+        "Led technical workshops and office hours for developers and data analysts at Nexamp and IBM, fostering hands-on learning and team growth.",
+        "Volunteered as an ESOL tutor for adult learners, supporting language and digital skill development."
       ],
-      tools: ['Jupyter', 'Google Colab', 'Zoom', 'LaTeX'],
-    },
-  },
+      highlights: [
+        "Algebra, Calculus, & Applied Math",
+        "Programming Fundamentals",
+        "Project-based learning and mentorship",
+        "Teacher tech coaching",
+        "Bilingual instruction (English/Spanish)"
+      ],
+      sampleProjects: [
+        {
+          name: "Teacher Tech Support Program",
+          desc: "Guided local educators in adopting classroom technology and responsible AI tools."
+        },
+        {
+          name: "STEM Tutoring Series",
+          desc: "Delivered in-person algebra, calculus, and coding sessions emphasizing conceptual understanding and problem-solving."
+        }
+      ]
+    }
+  }
+
 ]

@@ -12,9 +12,8 @@ type Props = {
   onClose: () => void
 }
 
-/* small skeleton loader for media slots */
 const Skeleton = memo(() => (
-  <div className="animate-pulse bg-[var(--color-border)]/40 rounded-lg w-full h-48" />
+  <div className="animate-pulse bg-(--color-border)/40 rounded-lg w-full h-40 sm:h-48" />
 ))
 Skeleton.displayName = 'Skeleton'
 
@@ -24,7 +23,13 @@ export default function ServiceModal({ service, onClose }: Props) {
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setReducedMotion(mq.matches)
+
+    // Set asynchronously to avoid triggering cascading re-renders (ESLint-safe)
+    queueMicrotask(() => setReducedMotion(mq.matches))
+
+    const handleChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches)
+    mq.addEventListener('change', handleChange)
+    return () => mq.removeEventListener('change', handleChange)
   }, [])
 
   if (!service) return null
@@ -47,57 +52,56 @@ export default function ServiceModal({ service, onClose }: Props) {
           exit={{ y: prefersReducedMotion ? 0 : 30, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 280, damping: 25 }}
           onClick={(e) => e.stopPropagation()}
-          className="relative bg-[var(--color-bg)] rounded-xl shadow-xl 
-                     max-w-3xl w-full p-6 text-left overflow-y-auto max-h-[90vh]
-                     will-change-transform contain-layout"
+          className="relative bg-(--color-bg) rounded-xl shadow-xl 
+                     max-w-3xl w-full p-6 text-left overflow-y-auto max-h-[85vh]
+                     scrollbar-thin scrollbar-thumb-[var(--color-border)] scrollbar-track-transparent"
         >
           {/* Close button */}
           <button
             onClick={onClose}
             aria-label="Close"
-            className="absolute top-4 right-4 text-[var(--color-text-muted)] hover:text-accent
-                       focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded"
+            className="absolute top-3 right-3 text-(--color-text-muted) hover:text-accent
+                       focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent) rounded"
           >
             <X className="w-5 h-5" />
           </button>
 
-          {/* Header row */}
-          <div className="flex items-start gap-3 mb-4">
+          {/* Header */}
+          <div className="flex items-start gap-3 mb-3">
             <IconForService
               name={service.icon}
-              className="w-8 h-8 text-accent flex-shrink-0"
+              className="w-7 h-7 text-accent shrink-0"
             />
             <div>
-              <h2 className="text-2xl font-semibold text-accent leading-snug">
+              <h2 className="text-xl font-semibold text-accent leading-tight">
                 {service.title}
               </h2>
               {service.description && (
-                <p className="text-sm text-[var(--color-text-muted)] leading-normal">
+                <p className="text-sm text-(--color-text) leading-normal mt-0.5">
                   {service.description}
                 </p>
               )}
             </div>
           </div>
 
-          {/* media preview (images / clips) */}
-          {service.media && service.media.length > 0 && (
-            <div className="mb-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {/* Media */}
+          {service.media?.length ? (
+            <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {service.media.map((m, i) => (
                 <div
                   key={i}
-                  className="relative w-full h-48 rounded-lg overflow-hidden border border-[var(--color-border)] shadow-sm"
+                  className="relative w-full aspect-video rounded-lg overflow-hidden border border-(--color-border) shadow-sm"
                 >
                   {!loadedMedia[i] && <Skeleton />}
-
                   {m.type === 'video' ? (
                     <video
                       src={m.src}
                       controls
                       preload="metadata"
                       onLoadedData={() =>
-                        setLoadedMedia((prev) => ({ ...prev, [i]: true }))
+                        setLoadedMedia((p) => ({ ...p, [i]: true }))
                       }
-                      className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                      className="absolute inset-0 w-full h-full object-cover"
                     />
                   ) : (
                     <Image
@@ -108,105 +112,105 @@ export default function ServiceModal({ service, onClose }: Props) {
                         loadedMedia[i] ? 'opacity-100' : 'opacity-0'
                       }`}
                       sizes="(max-width:768px) 100vw, 50vw"
-                      priority={false}
                       onLoadingComplete={() =>
-                        setLoadedMedia((prev) => ({ ...prev, [i]: true }))
+                        setLoadedMedia((p) => ({ ...p, [i]: true }))
                       }
                     />
                   )}
                 </div>
               ))}
             </div>
-          )}
+          ) : null}
 
-          {/* overview / pitch paragraph */}
+          {/* Overview */}
           {d?.overview && (
-            <p className="text-sm text-[var(--color-text-muted)] mb-5 leading-relaxed">
+            <p className="text-sm text-(--color-text-muted) mb-4 leading-relaxed">
               {d.overview}
             </p>
           )}
 
-          {/* experience bullets */}
-          {d?.experience && (
+          {/* Experience */}
+          {d?.experience?.length ? (
             <motion.section
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="mb-5"
+              className="mb-4 space-y-1"
             >
-              <h3 className="text-lg font-semibold text-accent-secondary mb-2">
+              <h3 className="text-base font-semibold text-accent-secondary">
                 Experience Highlights
               </h3>
-              <ul className="list-disc pl-5 space-y-1 text-sm text-[var(--color-text-muted)]">
+              <ul className="list-disc pl-5 text-sm text-(--color-text-muted) space-y-0.5">
                 {d.experience.map((e, i) => (
                   <li key={i}>{e}</li>
                 ))}
               </ul>
             </motion.section>
-          )}
+          ) : null}
 
-          {/* strengths chips */}
-          {d?.highlights && (
+          {/* Highlights */}
+          {d?.highlights?.length ? (
             <motion.section
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="mb-5"
+              className="mb-4"
             >
-              <h3 className="text-lg font-semibold text-accent-secondary mb-2">
+              <h3 className="text-base font-semibold text-accent-secondary mb-1">
                 Core Strengths
               </h3>
               <ul className="flex flex-wrap gap-2">
                 {d.highlights.map((h, i) => (
                   <li
                     key={i}
-                    className="border border-[var(--color-border)] rounded-full 
-                               px-3 py-1 text-xs bg-[var(--color-bg-secondary)]/40"
+                    className="border border-(--color-border) rounded-full 
+                               px-3 py-0.5 text-xs bg-(--color-bg-secondary)/50"
                   >
                     {h}
                   </li>
                 ))}
               </ul>
             </motion.section>
-          )}
+          ) : null}
 
-          {/* tools list */}
-          {d?.tools && (
+          {/* Tools */}
+          {d?.tools?.length ? (
             <motion.section
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="mb-5"
+              className="mb-4"
             >
-              <h3 className="text-lg font-semibold text-accent-secondary mb-2">
+              <h3 className="text-base font-semibold text-accent-secondary mb-1">
                 Tools & Tech
               </h3>
-              <p className="text-sm text-[var(--color-text-muted)]">
+              <p className="text-sm text-(--color-text-muted)">
                 {d.tools.join(', ')}
               </p>
             </motion.section>
-          )}
+          ) : null}
 
-          {/* sample projects */}
+          {/* Projects */}
           {d?.sampleProjects?.length ? (
             <motion.section
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
+              className="mb-1"
             >
-              <h3 className="text-lg font-semibold text-accent-secondary mb-2">
+              <h3 className="text-base font-semibold text-accent-secondary mb-1">
                 Sample Projects
               </h3>
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-1 text-sm">
                 {d.sampleProjects.map((p, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <ExternalLink className="w-4 h-4 mt-0.5 text-accent flex-shrink-0" />
+                    <ExternalLink className="w-4 h-4 mt-0.5 text-accent shrink-0" />
                     <div>
-                      <p className="font-medium text-[var(--color-text)]">
+                      <p className="font-medium text-(--color-text) leading-snug">
                         {p.name}
                       </p>
                       {p.desc && (
-                        <p className="text-[var(--color-text-muted)]">
+                        <p className="text-(--color-text-muted) text-xs leading-snug">
                           {p.desc}
                         </p>
                       )}

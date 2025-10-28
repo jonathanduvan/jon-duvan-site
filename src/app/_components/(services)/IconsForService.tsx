@@ -42,7 +42,7 @@ function IconForServiceBase({ name, className }: IconForServiceProps) {
   if (!IconComponent) {
     return (
       <div
-        className={`w-6 h-6 rounded-sm border border-[var(--color-border)] bg-[var(--color-bg-secondary)] ${className ?? ''}`}
+        className={`w-6 h-6 rounded-sm border border-(--color-border) bg-(--color-bg-secondary) ${className ?? ''}`}
         aria-hidden="true"
       />
     )
