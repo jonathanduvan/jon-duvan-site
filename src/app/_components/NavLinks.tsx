@@ -2,9 +2,9 @@
 import Link from 'next/link'
 
 export const NAV_SECTIONS = [
-  { id: 'hero', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'work', label: 'Work' },
+  { id: 'hero', label: 'Services' },
+  { id: 'career', label: 'Career' },
+  { id: 'work', label: 'Projects' },
   { id: 'writing', label: 'Writing' },
 ]
 

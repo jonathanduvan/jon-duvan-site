@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
-import { timeline } from '@/data/timeline'
+import { timeline } from '@/app/_data/timeline'
 import { useRef, useEffect, useState } from 'react'
 
 type Point = { x: number; y: number }

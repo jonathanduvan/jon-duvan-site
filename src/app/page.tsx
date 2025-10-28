@@ -1,14 +1,16 @@
-import AboutSection from "@/components/AboutSection";
-import HeroSection from "@/components/HeroSection";
-import WorkSection from "@/components/WorkSection";
-import WritingSection from "@/components/WritingSection";
-// import Image from "next/image";
+import CareerSection from "@/app/_components/(career)/CareerSection";
+import HeroSection from "@/app/_components/(hero)/HeroSection";
+import WorkSection from "@/app/_components/(projects)/ProjectSection";
+import WritingSection from "@/app/_components/(writing)/WritingSection";
+import ServicesSection from "./_components/(services)/ServicesSection";
+
 
 export default function Home() {
   return (
       <main>
         <HeroSection />
-        <AboutSection />
+        <ServicesSection />
+        <CareerSection />
         <WorkSection />
         <WritingSection/>
       </main>

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { TimelineItem as Item } from '@/data/timeline'
+import { TimelineItem as Item } from '@/app/_data/timeline'
 
 type Props = { item: Item; isLast: boolean }
 

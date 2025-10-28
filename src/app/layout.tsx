@@ -1,5 +1,5 @@
 import './globals.css'
-import ModernNav from '@/components/ModernNav'
+import ModernNav from '@/app/_components/ModernNav'
 
 export const metadata = {
   title: 'Jonathan Duvan Gonzalez | Systems, Software, Solar',

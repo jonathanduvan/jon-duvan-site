@@ -1,10 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import SectionWrapper from './SectionWrapper'
-import ProjectCard from './ProjectCard'
-import { projects } from '@/data/projects'
-import { gridStagger } from '@/lib/motion'
+import { projects } from '@/app/_data/projects'
+import { gridStagger } from '@/app/_lib/motion'
+import SectionWrapper from '@/app/_components/SectionWrapper'
+import ProjectCard from './ProjectCard';
 
 export default function WorkSection() {
   return (
@@ -12,7 +12,7 @@ export default function WorkSection() {
         <h2 className="text-3xl md:text-4xl font-semibold text-accent mb-10 text-center md:text-left">
           Select Projects
         </h2>
-        <p className="text-muted text-base md:text-lg mb-10 max-w-7xl mx-auto md:mx-0">
+        <p className="colored-text text-base md:text-lg mb-10 max-w-7xl mx-auto md:mx-0">
           Some of my latest projects I am currently working on.
         </p>
 

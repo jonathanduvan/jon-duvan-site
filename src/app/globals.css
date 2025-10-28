@@ -1,12 +1,17 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800&display=swap');
 @import "tailwindcss";
+
+
 
 /* =========================================================
    THEME TOKENS — Single Source of Truth
    Define color palette, fonts, spacing, shadows, and radius.
    ========================================================= */
 
-:root {
+:root {  
+
   /* === LIGHT MODE === */
+  
   --color-bg: #ffffff;
   --color-bg-secondary: #f8f9fa;
   --color-text: #1c1e26;
@@ -22,7 +27,7 @@
 
   /* Fonts & layout spacing */
   --font-sans: "Inter", system-ui, sans-serif;
-  --font-heading: "IBM Plex Sans", "Inter", sans-serif;
+  --font-heading: "Satoshi", "Inter", system-ui, sans-serif;
   --space-section: 6rem;
   --radius-card: 1rem;
 }
@@ -90,7 +95,7 @@ h1, h2, h3, h4 {
 
 section {
   padding-block: var(--space-section);
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -201,3 +206,39 @@ a:focus {
   }
 }
 
+
+.credential-hover {
+  transition: all 0.25s ease-in-out;
+}
+.credential-hover:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+}
+@media (prefers-color-scheme: dark) {
+  .credential-hover:hover {
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.15);
+  }
+}
+
+
+/* ================================================
+   HERO IMAGE SHAPE AND FLOW
+   ================================================ */
+
+.hero-image img {
+  mask-image: url('/jon_duvan.png');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('/jon_duvan.png');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+/* fallback for browsers without mask support */
+@supports not (mask-image: url('/jon_duvan.png')) {
+  .hero-image img {
+    border-radius: 50%;
+  }
+}

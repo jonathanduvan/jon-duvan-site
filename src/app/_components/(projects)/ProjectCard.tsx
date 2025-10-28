@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Project } from '@/data/projects'
+import { Project } from '@/app/_data/projects'
 import Image from 'next/image'
-import { cardEntrance } from '@/lib/motion'
+import { cardEntrance } from '@/app/_lib/motion'
 
 type Props = {
   project: Project

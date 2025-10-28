@@ -4,22 +4,22 @@ import { Github, Linkedin, Mail, Rss } from 'lucide-react'
 
 export const CONTACT_LINKS = [
   {
-    href: 'https://github.com/YOUR_USERNAME',
+    href: 'https://github.com/jonathanduvan',
     icon: Github,
     label: 'GitHub',
   },
   {
-    href: 'https://linkedin.com/in/YOUR_USERNAME',
+    href: 'https://linkedin.com/in/jonathan-duvan-gonzalez',
     icon: Linkedin,
     label: 'LinkedIn',
   },
   {
-    href: 'mailto:your.email@example.com',
+    href: 'mailto:jon@jonduvan.com',
     icon: Mail,
     label: 'Email',
   },
   {
-    href: 'https://YOUR_SUBSTACK_URL',
+    href: 'https://fossilfools.substack.com',
     icon: Rss,
     label: 'Substack',
   },
