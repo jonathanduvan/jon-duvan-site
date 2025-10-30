@@ -32,16 +32,13 @@ export type Service = {
 export const services: Service[] = [
   {
     id: 'software',
-    title: 'Software & AI Development',
+    title: 'Software & Systems Engineering',
     pill: 'Software/AI',
     icon: 'Code',
-    short: 'Full-stack, data, and ML solutions.',
+    short: 'Full-stack and ML solutions.',
     description:
-      'Building reliable, scalable applications with modern stacks (Next.js, FastAPI, PostgreSQL, and cloud).',
+      'Hands-on developer and technical problem solver.',
     tags: ['Next.js', 'FastAPI', 'Python', 'TypeScript', 'ML'],
-    media: [
-      { src: '/media/software_dashboard.png', alt: 'Sample dashboard UI' },
-    ],
     details: {
       overview:
         '7 years of professional software experience—from IBM enterprise systems to clean-energy platforms at Nexamp. Skilled at building performant, accessible, and secure applications end-to-end.',
@@ -63,24 +60,15 @@ export const services: Service[] = [
         'FastAPI',
         'Next.js',
       ],
-      sampleProjects: [
-        {
-          name: 'Argo Dispatch',
-          desc: 'News aggregation app emphasizing viewpoint diversity.',
-        },
-        {
-          name: 'SLOSH-ML',
-          desc: 'Reduced-order slosh modeling tool used in lunar vehicle research.',
-        },
-      ],
+      sampleProjects: [],
     },
   },
   {
     id: 'management',
-    title: 'Project & Product Management',
-    pill: 'Product & Project Mgmt',
+    title: 'Project, Product & Program Leadership',
+    pill: 'Project/Program Leadership',
     icon: 'ClipboardCheck',
-    short: 'Strategic execution & agile delivery.',
+    short: 'Deliver results across people, process, and technology.',
     description:
       'Certified PMP with proven track record translating complex requirements into deliverables.',
     tags: ['PMP', 'Agile', 'Risk Mgmt'],
@@ -101,66 +89,61 @@ export const services: Service[] = [
   },
   {
     id: 'analytics',
-    title: 'Data Analytics & Visualization',
+    title: 'Data, Analytics & Modeling',
     pill: 'Data Analytics',
     icon: 'BarChart3',
-    short: 'Insightful dashboards & data strategy.',
+    short: 'Engineer insights and decision systems from data.',
     description:
       'Transforming messy datasets into clarity using SQL, Pandas, Power BI, and interactive dashboards.',
     tags: ['Python', 'Pandas', 'SQL', 'Power BI', 'Plotly'],
   },
   {
-    id: 'energy',
-    title: 'Energy & Renewables',
-    icon: 'Sun',
-    short: 'Sustainable systems & solar consulting.',
+    id: 'solutions',
+    title: 'Product & Solutions Engineering',
+    pill: 'Product & Systems Design',
+    icon: 'ClipboardCheck',
+    short: 'Translate business needs into technical systems.',
     description:
-      'Hands-on solar, NABCEP PV Associate certified, with experience in system sizing, interconnection, and transition strategy.',
-    tags: ['Solar PV', 'Energy Modeling', 'NABCEP', 'Sustainability'],
-    media: [
-      {
-        src: '/media/solar_array.jpg',
-        alt: 'Solar array installation',
-        type: 'image',
-      },
-      {
-        src: '/media/energy_transition_diagram.png',
-        alt: 'Energy transition model',
-        type: 'image',
-      },
-    ],
+      'Turning complex systems into scalable, user-centered solutions that align engineering reality with business intent.',
+    tags: ['Architecture', 'Systems Thinking', 'Product Design', 'APIs', 'Strategy'],
     details: {
       overview:
-        'Field and design experience with community and residential solar systems. Focused on integrating renewable infrastructure with fair labor and accessibility principles.',
+        'I specialize in designing end-to-end systems that merge technical feasibility with user and business goals. My focus lies in translating abstract requirements into reliable architectures, optimizing developer workflows, and creating product strategies grounded in engineering realities.',
       experience: [
-        'Delivered 650+ residential PV installs ahead of federal incentive deadlines.',
-        'Developed SolCheck app to automate residential solar yield estimates.',
+        'Led full-stack solution design for cross-sector data integration at IBM, scaling to millions of daily transactions.',
+        'Architected solar billing and credit allocation pipelines at Nexamp, optimizing reliability and traceability across cloud environments.',
+        'Advised on product architecture for civic tech tools improving engagement analytics and accessibility.',
       ],
       highlights: [
-        'System sizing',
-        'Interconnection design',
-        'Energy transition policy',
+        'Product systems design',
+        'API-first architecture',
+        'UX–Engineering collaboration',
+        'Platform reliability strategy',
+        'Data-driven decision making',
       ],
-      tools: ['HelioScope', 'PVsyst', 'Python', 'Excel', 'GIS'],
-      sampleProjects: [
-        {
-          name: 'SolCheck',
-          desc: 'Open-source solar calculator for installers and homeowners.',
-        },
+      tools: [
+        'FastAPI',
+        'Next.js',
+        'PostgreSQL',
+        'AWS',
+        'Terraform',
+        'Figma',
+        'Notion',
       ],
     },
   },
   {
     id: 'tutoring',
-    title: 'Tutoring & Mentorship',
+    title: 'Education, Mentorship & Tech-for-Good',
     icon: 'BookOpen',
-    short: 'Personalized instruction in math, coding, and technology for learners of all levels.',
+    short: 'Empower others through technology and learning',
     description: 'I provide one-on-one and small-group tutoring that helps students and professionals build lasting confidence in problem-solving, coding, and technical literacy.',
-    tags: ['algebra', 'coding', 'calculus', 'ESOL', 'mentorship', 'STEM'],
+    tags: ['tutoring', 'algebra', 'coding', 'calculus', 'ESOL', 'mentorship'],
     details: {
-      overview: "I work with students from 5th grade through adulthood to make complex concepts approachable and practical. My teaching blends structured skill-building with real-world examples drawn from my experience in software development and analytics. Whether it’s algebra, calculus, or introductory programming, I focus on helping learners understand the 'why' behind the methods so they can apply knowledge independently.",
+      overview: `I work with students from 5th grade through adulthood to make complex concepts approachable and practical. My teaching blends structured skill-building with real-world examples drawn from my experience in software development and analytics. Whether it’s algebra, calculus, or introductory programming, I focus on helping learners understand the 'why' behind the methods so they can apply knowledge independently.\n
+      Comfortable with tutoring high-achieving children, and adults.`,
       experience: [
-        "Tutored students in algebra, calculus, and computer science from 5th grade through college level.",
+        "1-on-1 tutoring with a advanced 5th grader in math has led to her having a deeper understanding of applied math and breaking down word problems independently.",
         "Mentored teachers and professionals on integrating digital tools and AI responsibly in classrooms and workplaces.",
         "Led technical workshops and office hours for developers and data analysts at Nexamp and IBM, fostering hands-on learning and team growth.",
         "Volunteered as an ESOL tutor for adult learners, supporting language and digital skill development."

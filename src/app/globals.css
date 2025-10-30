@@ -16,6 +16,7 @@
   --color-text: #202227;              /* near-black for natural contrast */
   --color-text-muted: #5C6472;        /* mid gray for secondary info */
   --color-accent: #0070F3;            /* existing primary accent */
+  --color-jon-hair: #fb59a5;
   --color-accent-secondary: #2563EB;  /* deeper accent for hover/focus */
   --color-border: #D8DCE1;            /* low-contrast borders */
 
@@ -38,6 +39,7 @@
     --color-bg-secondary: #010b18;
     --color-text: #d8dee9;
     --color-text-muted: #a0a0a0;
+    --color-jon-hair: #3877EA;
     --color-accent: #07f6e2be;
     --color-accent-secondary: #fb59a5;
     --color-border: #2d2f3b;

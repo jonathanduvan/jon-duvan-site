@@ -31,26 +31,23 @@ export default function HeroSection() {
           />
         </div>
 
-        <h1 className="font-[var(--font-heading)] text-5xl md:text-6xl text-accent tracking-tight mb-2 leading-tight">
-          Jonathan Duvan Gonzalez
+        <h1 className="font-[var(--font-heading)] text-5xl md:text-6xl tracking-tight mb-2 leading-tight">
+          <span className="bg-gradient-to-r from-[var(--color-jon-hair)] to-[var(--color-accent-secondary)] bg-clip-text text-transparent">
+            Jon
+          </span>
+          <span>athan </span>
+          <span className="bg-gradient-to-r from-[var(--color-accent-secondary)] to-[var(--color-jon-hair)] bg-clip-text text-transparent">
+            Duvan
+          </span>{' '}
+          Gonzalez
         </h1>
-
-        {/* === Quick Services Buttons === */}
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
-          {services.map(s => (
-            <motion.button
-              key={s.id}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => setSelected(s)}
-              className="px-4 py-2 border border-[var(--color-border)] rounded-full text-sm 
-                         text-[var(--color-text)] hover:text-accent hover:border-[var(--color-accent)] 
-                         transition backdrop-blur-sm"
-            >
-              {s.pill ?? s.title.split(' ')[0]}
-            </motion.button>
-          ))}
-        </div>
+        <p
+          className="text-base md:text-lg text-[var(--color-text)] text-center 
+                     leading-relaxed max-w-2xl mb-6"
+        >
+          Building systems where software, data, and people meet — from energy
+          and civic tech to cloud architecture and product design.
+        </p>
         
         <div className="flex justify-center">
             <CredentialBadges />

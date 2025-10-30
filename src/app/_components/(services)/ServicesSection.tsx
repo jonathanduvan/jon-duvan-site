@@ -17,9 +17,10 @@ export default function ServicesSection() {
           Services & Offerings
         </h2>
         <p className="text-sm text-(--color-text) mb-10 max-w-3xl">
-          Hire me for software, data, and energy-focused projects.  
-          Below are key areas where I can contribute immediately — from full-stack
-          development to project management and renewable-energy consulting.
+          I build and scale technology that serves people and the planet. My work spans software engineering, data systems, and project leadership — from developing cloud-based platforms to hands-on renewable energy deployment. I aim to bridge the gap between code, infrastructure, and public good.
+        </p>
+        <p className="text-sm text-(--color-text) mb-10 max-w-3xl">
+          Available for Opportunities!
         </p>
 
         <motion.div
