@@ -2,7 +2,7 @@
 import Link from 'next/link'
 
 export const NAV_SECTIONS = [
-  { id: 'hero', label: 'Services' },
+  { id: 'services', label: 'Services' },
   { id: 'career', label: 'Career' },
   { id: 'work', label: 'Projects' },
   { id: 'writing', label: 'Writing' },
