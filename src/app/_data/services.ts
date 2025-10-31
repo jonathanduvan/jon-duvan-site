@@ -30,6 +30,57 @@ export type Service = {
 // 3. Your services (same content as before, just using typed icon keys)
 
 export const services: Service[] = [
+    {
+    id: 'management',
+    title: 'Project, Product & Program Leadership',
+    pill: 'Project/Program Leadership',
+    icon: 'ClipboardCheck',
+    short: 'Deliver results across people, process, and technology.',
+    description:
+      'Certified PMP with proven track record translating complex requirements into deliverables.',
+    tags: ['PMP', 'Agile', 'Risk Mgmt'],
+    details: {
+      overview:
+        'Blending technical literacy and strategic communication to lead interdisciplinary teams. Partnered with executives to design SLAs, risk registers, and executive dashboards.',
+      experience: [
+        "Led modernization of Nexamp’s consolidated billing platform for community solar, managing 3 developers through architecture redesign, API integration, and Azure deployment that scaled pilot use from 250 to thousands of users while cutting transaction times by 90%.",
+        "Managed a global supply optimization system redesign for a major brewery, cutting batch latency by 30% through Azure Databricks migration and cross-shore mentoring.",
+        "Oversaw architecture redesign of an airline’s revenue management system, translating complex business rules into event-driven data pipelines enabling near real-time fare adjustments.",
+        "Led pro bono IBM GIVE initiative integrating AWS and Tableau for election monitoring, delivering a scalable analytics tool that expanded outreach to underrepresented precincts.",
+        "Served as bridge between engineering, construction, and field crews at Freedom Forever, improving installation efficiency by redesigning workflows that cut service time by 70%."
+      ],
+
+      highlights: [
+        "Certified PMP with track record managing Agile and hybrid projects from concept through delivery.",
+        "Experience leading developers, analysts, and stakeholders across global, cross-functional teams.",
+        "Strong background in energy systems, sustainability, and cloud-based digital transformation.",
+        "Expertise in governance frameworks, risk management, and process optimization for enterprise-scale projects.",
+        "Bilingual communicator adept at translating between technical and operational teams to maintain alignment and trust.",
+        "Proven success driving efficiency, data transparency, and measurable business impact."
+      ],
+
+      tools: [
+        "MS Project", "Smartsheet", "Jira", "Confluence", "Azure DevOps",
+        "Tableau", "Power BI", "Databricks", "AWS", "Azure", "GCP",
+        "Python", "SQL", "Django", "React", "Terraform", "Docker", "Kubernetes"
+      ],
+
+      sampleProjects: [
+        { 
+          name: "Community Solar Billing Modernization – Nexamp", 
+          desc: "Scaled a multi-state solar billing system through architecture redesign and API queue integration, enabling unified customer billing and accelerating transactions by 90%."
+        },
+        { 
+          name: "Revenue Management Redesign – Major Airline", 
+          desc: "Delivered event-driven revenue management data architecture supporting real-time pricing decisions during COVID-19 recovery."
+        },
+        { 
+          name: "Pro Bono Election Analytics – IBM GIVE Initiative", 
+          desc: "Led AWS + Tableau app development to monitor polling sites and expand access for underrepresented precincts."
+        },
+      ]
+    },
+  },
   {
     id: 'software',
     title: 'Software & Systems Engineering',
@@ -61,30 +112,6 @@ export const services: Service[] = [
         'Next.js',
       ],
       sampleProjects: [],
-    },
-  },
-  {
-    id: 'management',
-    title: 'Project, Product & Program Leadership',
-    pill: 'Project/Program Leadership',
-    icon: 'ClipboardCheck',
-    short: 'Deliver results across people, process, and technology.',
-    description:
-      'Certified PMP with proven track record translating complex requirements into deliverables.',
-    tags: ['PMP', 'Agile', 'Risk Mgmt'],
-    details: {
-      overview:
-        'Blending technical literacy and strategic communication to lead interdisciplinary teams. Partnered with executives to design SLAs, risk registers, and executive dashboards.',
-      experience: [
-        'Managed 5 software teams across IBM Analytics division (40 developers).',
-        'Implemented agile workflows improving sprint velocity by 27%.',
-      ],
-      highlights: [
-        'Cross-functional leadership',
-        'Budget / scope alignment',
-        'KPI reporting',
-      ],
-      tools: ['Jira', 'Asana', 'Confluence', 'Notion', 'Power BI'],
     },
   },
   {
