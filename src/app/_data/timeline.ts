@@ -49,11 +49,18 @@ export const timeline: TimelineItem[] = [
       "Supported local sustainability and education programs. Analyzed building emissions data for city planning and taught English to adult learners in Boston’s immigrant community.",
   },
   {
-    year: "2025",
+    year: "Sept 2025 – Oct 2025",
     title: "Residential Solar Installer",
     org: "Freedom Forever, South Florida",
     description:
       "Installed over 650 solar panels and home batteries across South Florida. Streamlined field processes, translated between English–Spanish teams, and improved on-site efficiency.",
+  },
+  {
+    year: "Nov 2025 – Feb 2026",
+    title: "Operations & Supply Chain Coordinator",
+    org: "Luxury Cruise Supply Inc., Ft. Lauderdale, FL",
+    description:
+      "Coordinated time-critical procurement and logistics operations that supported 100+ boutique cruise sailings across the Caribbean with fixed departure deadlines.",
   },
   {
     year: "2025–Present",
@@ -65,7 +72,7 @@ export const timeline: TimelineItem[] = [
   {
     year: "Ongoing",
     title: "Graduate & Professional Development",
-    org: "MITx • DelftX • PMP • NABCEP PV Associate",
+    org: "DelftX • PMP • NABCEP PV Associate",
     description:
       "Continuing education in sustainable energy systems and project leadership. Integrating technical, social, and policy dimensions of the clean energy transition.",
   },

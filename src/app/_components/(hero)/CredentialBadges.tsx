@@ -14,15 +14,20 @@ const activeCreds = [
     img: '/certs/nabcep_pva_logo.png',
     link: '/certs/nabcep_pva.pdf', // hosted PDF version
   },
+  {
+    name: `Energy Production, Distribution & Safety Specialization`,
+    img: '/certs/suny_ubuff_logo.png',
+    link: 'https://coursera.org/share/993517b618d5d8eb9acb6a8542066515', // hosted PDF version
+  }
 ]
 
 const inProgress = [
   {
-    name: 'MITx Future Energy Systems',
-    link: 'https://www.edx.org/xseries/mitx-future-energy-systems',
+    name: 'Machine Learning Specialization (Stanford Online, Deeplearning.AI)',
+    link: 'https://www.coursera.org/specializations/machine-learning-introduction',
   },
   {
-    name: 'DelftX Intelligent & Integrated Energy Systems',
+    name: 'Intelligent & Integrated Energy Systems (DelftX)',
     link: 'https://www.edx.org/certificates/professional-certificate/delftx-intelligent-and-integrated-energy-systems?index=product&queryId=b3b9d38c423038dc96ecd0eaa88e6f1e&position=1',
   },
 ]
@@ -35,7 +40,7 @@ export default function CredentialBadges() {
         <h3 className="text-lg font-semibold text-accent mb-4">
           Active Credentials
         </h3>
-        <div className="flex flex-wrap justify-center gap-10">
+        <div className="flex gap-4">
           {activeCreds.map((cred) => (
             <motion.a
               key={cred.name}
